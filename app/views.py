@@ -1,9 +1,25 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 import json
+from django.views import generic
 
 # Circular Imports
 from . import models
+
+
+class CarDetailView(generic.DetailView):
+    model = models.Car
+    template_name = 'app/detail.html'
+
+class CarListView(generic.ListView):
+    #template_name = 'app/car_list.html'
+    #model = models.Car
+    #context_object_name = 'cars'
+    #queryset = models.Car.objects.filter(manufacturer__startswith='T')
+    def get_queryset(self):
+        qs = models.Car.objects.filter(manufacturer__startswith='H')
+        qs = qs.filter(model__startswith='C')
+        return qs
 
 
 def hello(request):
