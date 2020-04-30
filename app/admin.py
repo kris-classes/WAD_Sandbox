@@ -8,7 +8,7 @@ from .models import (
 class CarAdmin(admin.ModelAdmin):
     search_fields = ['manufacturer', 'model']
     list_display = ['manufacturer', 'model']
-
+    exclude = ('model',)
 class OwnerAdmin(admin.ModelAdmin):
     pass
 
