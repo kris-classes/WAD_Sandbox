@@ -23,6 +23,7 @@ class CarListView(generic.ListView):
 
 
 def hello(request):
+    raise Exception('test')
     return HttpResponse('hello')
 
 def list_cars(request):
