@@ -152,3 +152,22 @@ MEDIA_URL = '/mediaroot/'
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
+
+# Email
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+if DEBUG:
+    pass
+else:
+    # Here you would place your SendGrid credentials.
+    pass
+
+# S3
+if not DEBUG:
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    AWS_ACCESS_KEY_ID='PUT YOURS HERE'
+    AWS_SECRET_ACCESS_KEY='PUT YOURS HERE'
+    AWS_STORAGE_BUCKET_NAME='PUT YOURS HERE'
+
+
+AUTH_USER_MODEL = 'app.User'
